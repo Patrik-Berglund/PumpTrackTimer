@@ -46,9 +46,12 @@ namespace PumpTrackTimer.ViewModels
         public void Reset()
         {
             Timer.Stop();
-            TimerDisplay = TimeSpan.Zero.ToString(TimeDisplayFormat);
 
+            TimerDisplay = TimeSpan.Zero.ToString(TimeDisplayFormat);
             StartStopLabel = StartLable;
+
+            LastTrigger = DateTime.MinValue;
+            StartTime = DateTime.MinValue;
         }
 
         public void ClearHistory()
@@ -125,11 +128,11 @@ namespace PumpTrackTimer.ViewModels
 #if !DEBUG
         private readonly GpioController GpioController = new();
 #endif
-        private DateTime StartTime;
-        private DateTime LastTrigger;
+        private DateTime StartTime = DateTime.MinValue;
+        private DateTime LastTrigger = DateTime.MinValue;
         private int Index = 1;
 
-        public ObservableCollection<TimeRecord> Times { get; private set; } = new();
+        public ObservableCollection<TimeRecord> Times { get; } = new();
 
         private string _timerDisplay = TimeSpan.Zero.ToString(TimeDisplayFormat);
         public string TimerDisplay
