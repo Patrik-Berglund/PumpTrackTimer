@@ -16,15 +16,17 @@ namespace PumpTrackTimer.ViewModels
         private const int MaxTimeSeconds = 60;
         private const int MinTimeSeconds = 20;
 
-        private const int GpioPinNumber = 18;
+        private const int GpioPinNumber = 4;
 
         public MainViewModel()
         {
             Timer.Interval = TimeSpan.FromMilliseconds(100);
             Timer.Tick += TimerTick;
 
-            GpioController.OpenPin(GpioPinNumber, PinMode.InputPullUp);
+#if !DEBUG
+            GpioController.OpenPin(GpioPinNumber);
             GpioController.RegisterCallbackForPinValueChangedEvent(GpioPinNumber, PinEventTypes.Falling, PinChangeEvent);
+#endif
         }
 
         public void StartStop()
@@ -120,8 +122,9 @@ namespace PumpTrackTimer.ViewModels
         public bool ExternalTriggerEnabled { get; set; } = true;
 
         private readonly DispatcherTimer Timer = new();
+#if !DEBUG
         private readonly GpioController GpioController = new();
-
+#endif
         private DateTime StartTime;
         private DateTime LastTrigger;
         private int Index = 1;
