@@ -11,19 +11,20 @@ namespace PumpTrackTimer.ViewModels
         private const string TimeDisplayFormat = @"mm\:ss\.fff";
         private const string StartLable = "Start";
         private const string StopLable = "Stop";
+
         private const int HoldOffSeconds = 5;
         private const int MaxTimeSeconds = 60;
         private const int MinTimeSeconds = 20;
 
-        private const int gpioPinNumber = 18;
+        private const int GpioPinNumber = 18;
 
         public MainViewModel()
         {
             Timer.Interval = TimeSpan.FromMilliseconds(100);
             Timer.Tick += TimerTick;
 
-            GpioController.OpenPin(gpioPinNumber, PinMode.InputPullUp);
-            GpioController.RegisterCallbackForPinValueChangedEvent(gpioPinNumber, PinEventTypes.Falling, PinChangeEvent);
+            GpioController.OpenPin(GpioPinNumber, PinMode.InputPullUp);
+            GpioController.RegisterCallbackForPinValueChangedEvent(GpioPinNumber, PinEventTypes.Falling, PinChangeEvent);
         }
 
         public void StartStop()
