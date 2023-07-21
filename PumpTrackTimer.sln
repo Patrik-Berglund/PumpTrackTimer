@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PumpTrackTimer", "PumpTrackTimer\PumpTrackTimer.csproj", "{05341F2F-928F-4B68-825B-AA9D7B522A93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PumpTrackTimer.Desktop", "PumpTrackTimer.Desktop\PumpTrackTimer.Desktop.csproj", "{E79FED26-C500-4FDC-B486-5C9E24EA9125}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05341F2F-928F-4B68-825B-AA9D7B522A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05341F2F-928F-4B68-825B-AA9D7B522A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05341F2F-928F-4B68-825B-AA9D7B522A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05341F2F-928F-4B68-825B-AA9D7B522A93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E79FED26-C500-4FDC-B486-5C9E24EA9125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E79FED26-C500-4FDC-B486-5C9E24EA9125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E79FED26-C500-4FDC-B486-5C9E24EA9125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E79FED26-C500-4FDC-B486-5C9E24EA9125}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FF346E9-1A75-4973-868F-5CEAB6A1BFDE}
+	EndGlobalSection
+EndGlobal

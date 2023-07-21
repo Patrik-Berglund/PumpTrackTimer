@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:PumpTrackTimer.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PumpTrackTimer.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <DockPanel LastChildFill="True">
+    <DockPanel DockPanel.Dock="Top">
+      
+      <Border Background="SkyBlue" BorderBrush="Black" BorderThickness="3" DockPanel.Dock="Left">
+        <DockPanel>
+          <TextBlock FontSize="150" Padding="10" FontFamily="Courier New" HorizontalAlignment="Center" Text="{Binding TimerDisplay}"/>
+        </DockPanel>
+      </Border>
+
+      <Border Background="SkyBlue" BorderBrush="Black" BorderThickness="3" DockPanel.Dock="Left">
+        <DockPanel>
+          <DockPanel DockPanel.Dock="Top">
+            <Button FontSize="72" Command="{Binding StartStop}" Content="{Binding StartStopLabel}"/>
+          </DockPanel>
+          <DockPanel DockPanel.Dock="Top">
+            <Button HorizontalAlignment="Right" Command="{Binding Reset}">Reset</Button>
+            <Button HorizontalAlignment="Right" Command="{Binding ClearHistory}">Clear History</Button>
+          </DockPanel>
+          <DockPanel DockPanel.Dock="Top">
+            <CheckBox IsChecked="{Binding ExternalTriggerEnabled}">Ext. Trig</CheckBox>            
+          </DockPanel>
+        </DockPanel>
+      </Border>
+    </DockPanel>
+
+    <Border BorderBrush="Black" BorderThickness="3">
+      <Grid>
+        <DataGrid Name="TimesDataGrid" ItemsSource="{Binding Times}" AutoGenerateColumns="False" >
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="#"  Binding="{Binding Index}"/>
+            <DataGridTextColumn Header="Time [min:sec.ms]" Binding="{Binding Time}" />
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+    </Border>
+    
+  </DockPanel>
+</UserControl>
