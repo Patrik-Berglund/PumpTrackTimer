@@ -9,7 +9,7 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="Pump Track Timer"
         TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
+        Background="Black"
         ExtendClientAreaToDecorationsHint="True"> 
   
   <views:MainView />

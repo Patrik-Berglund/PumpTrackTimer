@@ -14,40 +14,29 @@
   </Design.DataContext>
 
   <Panel>
-    <ExperimentalAcrylicBorder IsHitTestVisible="False">
-      <ExperimentalAcrylicBorder.Material>
-        <ExperimentalAcrylicMaterial BackgroundSource="Digger" TintColor="Black" TintOpacity="1" MaterialOpacity="0.65" />
-      </ExperimentalAcrylicBorder.Material>
-    </ExperimentalAcrylicBorder>
-
     <DockPanel LastChildFill="True">
-      <DockPanel DockPanel.Dock="Top">
+      <DockPanel DockPanel.Dock="Top" Margin="5">
+        <DockPanel Margin="10">
+          <TextBlock FontSize="220" FontFamily="DejaVu Sans Mono" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TimerDisplay}"/>
+        </DockPanel>
 
-        <Border BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Left">
-          <DockPanel>
-            <TextBlock FontSize="150" Padding="10" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Center" Text="{Binding TimerDisplay}"/>
+        <DockPanel Margin="10">
+          <DockPanel DockPanel.Dock="Top">
+            <Button Width="270" HorizontalContentAlignment="Center" FontSize="87" Background="{Binding StartStopLabel.Color}" Command="{Binding StartStop}" Content="{Binding StartStopLabel.Label}"/>
           </DockPanel>
-        </Border>
 
-        <Border BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Left">
-          <DockPanel Margin="5">
-            <DockPanel DockPanel.Dock="Top" Margin="5">
-              <Button Width="200" HorizontalContentAlignment="Center" FontSize="72" Background="{Binding StartStopLabel.Color}" Command="{Binding StartStop}" Content="{Binding StartStopLabel.Label}"/>
-            </DockPanel>
-            
-            <DockPanel DockPanel.Dock="Top" Margin="5">
-              <Button Command="{Binding Reset}">Reset</Button>
-            </DockPanel>
-            
-            <DockPanel DockPanel.Dock="Top" Margin="5">
-              <CheckBox HorizontalAlignment="Left" IsChecked="{Binding ExternalTriggerEnabled}">Ext. Trig</CheckBox>
-              <Button HorizontalAlignment="Right" Command="{Binding ClearHistory}">Clear History</Button>
-            </DockPanel>
+          <DockPanel DockPanel.Dock="Top">
+            <Button Command="{Binding Reset}">Reset</Button>
           </DockPanel>
-        </Border>
+
+          <DockPanel DockPanel.Dock="Top">
+            <CheckBox HorizontalAlignment="Left" IsChecked="{Binding ExternalTriggerEnabled}">Ext. Trig</CheckBox>
+            <Button HorizontalAlignment="Right" Command="{Binding ClearHistory}">Clear History</Button>
+          </DockPanel>
+        </DockPanel>
       </DockPanel>
 
-      <Border BorderBrush="Black" BorderThickness="2">
+      <DockPanel Margin="5">
         <Grid>
           <DataGrid Name="TimesDataGrid" ItemsSource="{Binding Times}" AutoGenerateColumns="False" >
             <DataGrid.Columns>
@@ -57,9 +46,8 @@
             </DataGrid.Columns>
           </DataGrid>
         </Grid>
-      </Border>
+      </DockPanel>
 
     </DockPanel>
-    
   </Panel>
 </UserControl>
