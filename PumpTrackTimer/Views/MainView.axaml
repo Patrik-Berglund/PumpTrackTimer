@@ -6,47 +6,60 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="PumpTrackTimer.Views.MainView"
              x:DataType="vm:MainViewModel">
+  
   <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <DockPanel LastChildFill="True">
-    <DockPanel DockPanel.Dock="Top">
-      
-      <Border Background="SkyBlue" BorderBrush="Black" BorderThickness="3" DockPanel.Dock="Left">
-        <DockPanel>
-          <TextBlock FontSize="150" Padding="10" FontFamily="Courier New" HorizontalAlignment="Center" Text="{Binding TimerDisplay}"/>
-        </DockPanel>
+  <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial BackgroundSource="Digger" TintColor="Black" TintOpacity="1" MaterialOpacity="0.65" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+
+    <DockPanel LastChildFill="True">
+      <DockPanel DockPanel.Dock="Top">
+
+        <Border BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Left">
+          <DockPanel>
+            <TextBlock FontSize="150" Padding="10" FontFamily="DejaVu Sans Mono" HorizontalAlignment="Center" Text="{Binding TimerDisplay}"/>
+          </DockPanel>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Left">
+          <DockPanel Margin="5">
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+              <Button Width="200" HorizontalContentAlignment="Center" FontSize="72" Background="{Binding StartStopLabel.Color}" Command="{Binding StartStop}" Content="{Binding StartStopLabel.Label}"/>
+            </DockPanel>
+            
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+              <Button Command="{Binding Reset}">Reset</Button>
+            </DockPanel>
+            
+            <DockPanel DockPanel.Dock="Top" Margin="5">
+              <CheckBox HorizontalAlignment="Left" IsChecked="{Binding ExternalTriggerEnabled}">Ext. Trig</CheckBox>
+              <Button HorizontalAlignment="Right" Command="{Binding ClearHistory}">Clear History</Button>
+            </DockPanel>
+          </DockPanel>
+        </Border>
+      </DockPanel>
+
+      <Border BorderBrush="Black" BorderThickness="2">
+        <Grid>
+          <DataGrid Name="TimesDataGrid" ItemsSource="{Binding Times}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+              <DataGridTextColumn FontFamily="DejaVu Sans Mono" Header="#"  Binding="{Binding Index}"/>
+              <DataGridTextColumn FontFamily="DejaVu Sans Mono" Header="Date" Binding="{Binding TimeStamp}" />
+              <DataGridTextColumn FontFamily="DejaVu Sans Mono" Header="Lap Time [min:sec.ms]" Binding="{Binding Time}" />
+            </DataGrid.Columns>
+          </DataGrid>
+        </Grid>
       </Border>
 
-      <Border Background="SkyBlue" BorderBrush="Black" BorderThickness="3" DockPanel.Dock="Left">
-        <DockPanel>
-          <DockPanel DockPanel.Dock="Top">
-            <Button FontSize="72" Command="{Binding StartStop}" Content="{Binding StartStopLabel}"/>
-          </DockPanel>
-          <DockPanel DockPanel.Dock="Top">
-            <Button HorizontalAlignment="Right" Command="{Binding Reset}">Reset</Button>
-            <Button HorizontalAlignment="Right" Command="{Binding ClearHistory}">Clear History</Button>
-          </DockPanel>
-          <DockPanel DockPanel.Dock="Top">
-            <CheckBox IsChecked="{Binding ExternalTriggerEnabled}">Ext. Trig</CheckBox>            
-          </DockPanel>
-        </DockPanel>
-      </Border>
     </DockPanel>
-
-    <Border BorderBrush="Black" BorderThickness="3">
-      <Grid>
-        <DataGrid Name="TimesDataGrid" ItemsSource="{Binding Times}" AutoGenerateColumns="False" >
-          <DataGrid.Columns>
-            <DataGridTextColumn Header="#"  Binding="{Binding Index}"/>
-            <DataGridTextColumn Header="Time [min:sec.ms]" Binding="{Binding Time}" />
-          </DataGrid.Columns>
-        </DataGrid>
-      </Grid>
-    </Border>
     
-  </DockPanel>
+  </Panel>
 </UserControl>
