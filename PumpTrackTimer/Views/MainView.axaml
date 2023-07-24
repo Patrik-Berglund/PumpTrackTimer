@@ -22,7 +22,7 @@
 
         <DockPanel Margin="10">
           <DockPanel DockPanel.Dock="Top">
-            <Button Width="270" HorizontalContentAlignment="Center" FontSize="87" Background="{Binding StartStopLabel.Color}" Command="{Binding StartStop}" Content="{Binding StartStopLabel.Label}"/>
+            <Button Width="270" HorizontalContentAlignment="Center" FontSize="87" Background="{Binding StartStopButton.Color}" Command="{Binding StartStop}" Content="{Binding StartStopButton.Label}"/>
           </DockPanel>
 
           <DockPanel DockPanel.Dock="Top">

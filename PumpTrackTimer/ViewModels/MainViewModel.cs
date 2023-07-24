@@ -9,8 +9,8 @@ namespace PumpTrackTimer.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private const string TimeDisplayFormat = @"mm\:ss\.fff";
-        private readonly StartStopButton StartButton = new("Start", "Green");
-        private readonly StartStopButton StopButton = new("Stop", "Red");
+        private readonly ButtonStyle StartButton = new("Start", "Green");
+        private readonly ButtonStyle StopButton = new("Stop", "Red");
 
         private const int HoldOffSeconds = 5;
         private const int MaxTimeSeconds = 60;
@@ -20,7 +20,7 @@ namespace PumpTrackTimer.ViewModels
 
         public MainViewModel()
         {
-            _startStopLabel = StartButton;
+            _startStopButton = StartButton;
 
             Timer.Interval = TimeSpan.FromMilliseconds(100);
             Timer.Tick += TimerTick;
@@ -50,7 +50,7 @@ namespace PumpTrackTimer.ViewModels
             Timer.Stop();
 
             TimerDisplay = TimeSpan.Zero.ToString(TimeDisplayFormat);
-            StartStopLabel = StartButton;
+            StartStopButton = StartButton;
 
             LastTrigger = DateTime.MinValue;
             StartTime = DateTime.MinValue;
@@ -67,7 +67,7 @@ namespace PumpTrackTimer.ViewModels
             Timer.Start();
 
             StartTime = DateTime.UtcNow;
-            StartStopLabel = StopButton;
+            StartStopButton = StopButton;
         }
 
         private void Stop()
@@ -79,7 +79,7 @@ namespace PumpTrackTimer.ViewModels
             TimerDisplay = time.ToString(TimeDisplayFormat);
             Times.Add(new(Index++, TimerDisplay, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
 
-            StartStopLabel = StartButton;
+            StartStopButton = StartButton;
         }
 
         private void TimerTick(object? sender, EventArgs e)
@@ -143,15 +143,14 @@ namespace PumpTrackTimer.ViewModels
             set => this.RaiseAndSetIfChanged(ref _timerDisplay, value);
         }
 
-        private StartStopButton _startStopLabel;
-        public StartStopButton StartStopLabel
+        private ButtonStyle _startStopButton;
+        public ButtonStyle StartStopButton
         {
-            get => _startStopLabel;
-            set => this.RaiseAndSetIfChanged(ref _startStopLabel, value);
+            get => _startStopButton;
+            set => this.RaiseAndSetIfChanged(ref _startStopButton, value);
         }
     }
 
-    public record StartStopButton(string Label, string Color);
-
+    public record ButtonStyle(string Label, string Color);
     public record TimeRecord(int Index, string Time, string TimeStamp);
 }
