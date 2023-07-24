@@ -64,20 +64,24 @@ namespace PumpTrackTimer.ViewModels
 
         private void Start()
         {
+            StartTime = DateTime.UtcNow;
+
             Timer.Start();
 
-            StartTime = DateTime.UtcNow;
             StartStopButton = StopButton;
         }
 
         private void Stop()
         {
-            var time = RunningTime();
+            if (Timer.IsEnabled)
+            {
+                var time = RunningTime();
 
-            Timer.Stop();
+                Timer.Stop();
 
-            TimerDisplay = time.ToString(TimeDisplayFormat);
-            Times.Add(new(Index++, TimerDisplay, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
+                TimerDisplay = time.ToString(TimeDisplayFormat);
+                Times.Add(new(Index++, TimerDisplay, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
+            }
 
             StartStopButton = StartButton;
         }
