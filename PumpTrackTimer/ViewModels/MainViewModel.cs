@@ -13,8 +13,8 @@ namespace PumpTrackTimer.ViewModels
         private readonly ButtonStyle StopButton = new("Stop", "Red");
 
         private const int HoldOffSeconds = 5;
-        private const int MaxTimeSeconds = 60;
-        private const int MinTimeSeconds = 20;
+        private const int MaxTimeSeconds = 120;
+        private const int MinTimeSeconds = 10;
 
         private const int GpioPinNumber = 4;
 
@@ -80,7 +80,7 @@ namespace PumpTrackTimer.ViewModels
                 Timer.Stop();
 
                 TimerDisplay = time.ToString(TimeDisplayFormat);
-                Times.Add(new(Index++, TimerDisplay, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
+                Times.Insert(0, new(Index++, TimerDisplay, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
             }
 
             StartStopButton = StartButton;

@@ -38,11 +38,23 @@
 
       <DockPanel Margin="5">
         <Grid>
-          <DataGrid Name="TimesDataGrid" ItemsSource="{Binding Times}" AutoGenerateColumns="False" >
+          <DataGrid Name="TimesDataGrid" FontFamily="DejaVu Sans Mono" FontSize="24" ItemsSource="{Binding Times}" AutoGenerateColumns="False" IsReadOnly="True" >
             <DataGrid.Columns>
-              <DataGridTextColumn FontFamily="DejaVu Sans Mono" Header="#"  Binding="{Binding Index}"/>
-              <DataGridTextColumn FontFamily="DejaVu Sans Mono" Header="Date" Binding="{Binding TimeStamp}" />
-              <DataGridTextColumn FontFamily="DejaVu Sans Mono" Header="Lap Time [min:sec.ms]" Binding="{Binding Time}" />
+              <DataGridTextColumn FontSize="24" Binding="{Binding Index}">
+                <DataGridTextColumn.Header>
+                  <TextBlock FontSize="24" Text="#" />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn FontSize="24" Binding="{Binding TimeStamp}">
+                <DataGridTextColumn.Header>
+                  <TextBlock FontSize="24" Text="Date" />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn FontSize="24" Binding="{Binding Time}">
+                <DataGridTextColumn.Header>
+                  <TextBlock FontSize="24" Text="Lap Time [min:sec.ms]" />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
             </DataGrid.Columns>
           </DataGrid>
         </Grid>
