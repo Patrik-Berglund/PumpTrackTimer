@@ -45,7 +45,7 @@
                   <TextBlock FontSize="24" Text="#" />
                 </DataGridTextColumn.Header>
               </DataGridTextColumn>
-              <DataGridTextColumn FontSize="24" Binding="{Binding TimeStamp}">
+              <DataGridTextColumn Width="300" FontSize="24" Binding="{Binding TimeStamp}">
                 <DataGridTextColumn.Header>
                   <TextBlock FontSize="24" Text="Date" />
                 </DataGridTextColumn.Header>
