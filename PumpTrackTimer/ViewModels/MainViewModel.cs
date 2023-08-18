@@ -80,7 +80,7 @@ namespace PumpTrackTimer.ViewModels
                 Timer.Stop();
 
                 TimerDisplay = time.ToString(TimeDisplayFormat);
-                Times.Insert(0, new(Index++, TimerDisplay, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
+                Times.Insert(0, new(Index++, TimerDisplay, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")));
             }
 
             StartStopButton = StartButton;
